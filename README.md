@@ -1,2 +1,0 @@
-# Gift
-for najah
