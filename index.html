@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gift For Najah Alifia</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #ffe7ee; /* soft pink */
+      --bg2: #ffd2e6; /* deeper */
+      --accent: #ff6fa8; /* button accent */
+      --soft-shadow: 0 10px 25px rgba(255,105,160,0.12), 0 2px 6px rgba(0,0,0,0.04);
+      --glass: rgba(255,255,255,0.6);
+      --card-radius: 18px;
+      --easing: cubic-bezier(.2,.9,.26,1);
+    }
+
+    /* page background: soft pink gradient + subtle watercolor-like texture (optional image)
+       If you have a watercolor texture image, place it at "gambar_gift/watercolor.png" and it will blend in. */
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,245,250,0.8), transparent),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      background-blend-mode: screen, normal;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      overflow:hidden;
+    }
+
+    /* Optional watercolor overlay if user adds it */
+    body::before{
+      content:'';
+      position:fixed;inset:0;z-index:0;
+      background-image: url('gambar_gift/watercolor.png');
+      background-size:cover;
+      background-position:center;
+      opacity:0.15;
+      pointer-events:none;
+      mix-blend-mode:overlay;
+    }
+
+    /* container */
+    .stage{
+      position:relative;
+      z-index:1;
+      width:100%;
+      max-width:980px;
+      aspect-ratio: 16/9;
+      min-height:520px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+      border-radius:28px;
+      box-shadow: var(--soft-shadow);
+      padding:28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .content-wrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}
+
+    /* central card area */
+    .card{
+      width:min(680px,92%);
+      max-width:760px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.35));
+      border-radius:20px;
+      padding:28px;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      box-shadow: var(--soft-shadow);
+      backdrop-filter: blur(6px) saturate(1.05);
+    }
+
+    /* slide viewport */
+    .viewport{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      min-height:360px;
+    }
+
+    .slide{
+      position:absolute;
+      top:50%;left:50%;transform:translate(-50%,-50%) scale(.98);
+      opacity:0;pointer-events:none;
+      transition: opacity 600ms var(--easing), transform 600ms var(--easing);
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+    }
+
+    .slide.active{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+
+    /* presentational panel (left) and controls (bottom) */
+    .gift-wrap{
+      width:420px;
+      max-width:48%;
+      min-width:220px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      perspective:1200px;
+    }
+
+    /* box container */
+    .gift-box{
+      width:260px;height:220px;border-radius:14px;position:relative;display:flex;align-items:center;justify-content:center;
+      transform-style:preserve-3d;transition:transform 500ms var(--easing);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .box-base{
+      width:100%;height:70%;background:linear-gradient(180deg,#ffb6cf,#ff9fbe);border-radius:12px 12px 14px 14px;position:absolute;bottom:0;left:0;z-index:2;display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;overflow:visible;
+    }
+    .box-lid{
+      width:104%;height:48%;background:linear-gradient(180deg,#ffc9dd,#ff9abf);border-radius:12px;position:absolute;top:0;left:-2%;z-index:4;transform-origin:50% 120%;
+      display:flex;align-items:center;justify-content:center;padding-top:16px;box-shadow:0 18px 30px rgba(255,90,140,0.15);
+    }
+
+    /* ribbon */
+    .ribbon{
+      position:absolute;z-index:5;pointer-events:none;display:flex;flex-direction:column;align-items:center;gap:6px;
+    }
+    .ribbon .band{width:64%;height:18px;background:linear-gradient(90deg,#ff5f97,#ff9fc7);border-radius:30px}
+    .ribbon .bow{width:74px;height:74px;background:radial-gradient(circle at 30% 30%, #fff4, transparent),linear-gradient(90deg,#ff5f97,#ff85b8);border-radius:50%;display:flex;align-items:center;justify-content:center;transform:translateY(-6px)}
+    .ribbon .bow::after{content:'';width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.2)}
+
+    /* gift image */
+    .gift-img{
+      width:210px;height:210px;display:flex;align-items:center;justify-content:center;position:relative;z-index:10;transform-style:preserve-3d;will-change:transform,opacity;
+    }
+    .gift-img img{max-width:100%;max-height:100%;display:block}
+
+    /* slide content (title + buttons) */
+    .meta{
+      width:48%;max-width:360px;min-width:160px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:8px;
+    }
+    .meta h1{margin:0;font-size:22px;letter-spacing:0.2px;color:#fff;text-shadow:0 6px 18px rgba(255,110,170,0.22);font-weight:700}
+    .meta p{margin:0;color:#5a2841;opacity:0.9}
+
+    .controls{display:flex;gap:12px;margin-top:6px}
+    .btn{
+      appearance:none;border:0;padding:10px 20px;border-radius:999px;cursor:pointer;font-weight:700;letter-spacing:0.6px;transition:transform 240ms var(--easing), box-shadow 240ms;box-shadow:var(--soft-shadow);
+      background:linear-gradient(90deg,var(--accent),#ff81b3);color:#fff;font-size:15px;
+    }
+    .btn.secondary{background:rgba(255,255,255,0.9);color:var(--accent);border:1px solid rgba(255,111,160,0.12);font-weight:700}
+
+    .btn:hover{transform:scale(1.03);box-shadow: 0 18px 30px rgba(255,110,170,0.18)}
+    .btn:active{transform:scale(0.98)}
+
+    /* open button special */
+    .btn-open{padding:14px 28px;font-size:17px}
+
+    /* small footnote */
+    .credit{position:absolute;left:18px;bottom:18px;font-size:12px;color:#7b4560;opacity:0.85}
+
+    /* sparkle particles (absolute overlay) */
+    #glitter-canvas, #confetti-canvas{position:absolute;inset:0;pointer-events:none;z-index:100}
+
+    /* Responsive adjustments */
+    @media (max-width:900px){
+      .card{padding:18px;border-radius:16px}
+      .gift-wrap{max-width:50%}
+      .meta{display:none}
+      .card{flex-direction:column;gap:12px}
+    }
+    @media (max-width:480px){
+      .stage{padding:12px}
+      .card{padding:14px}
+      .gift-box{width:220px;height:190px}
+    }
+
+    /* Animations for specific gift effects */
+    @keyframes rotateYslow{0%{transform:rotateY(0)}50%{transform:rotateY(18deg)}100%{transform:rotateY(0)}}
+    @keyframes bounceLoop{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes swing{0%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}100%{transform:rotate(-6deg)}}
+    @keyframes wave{0%{transform:translateY(0) skewX(0)}50%{transform:translateY(-8px) skewX(4deg)}100%{transform:translateY(0) skewX(0)}}
+
+    .effect-rotate{animation: rotateYslow 3600ms infinite ease-in-out}
+    .effect-bounce{animation: bounceLoop 1400ms infinite var(--easing)}
+    .effect-swing{animation: swing 2200ms infinite ease-in-out}
+    .effect-wave{animation: wave 2000ms infinite linear}
+
+  </style>
+</head>
+<body>
+  <div class="stage" role="application" aria-label="Gift for Najah Alifia">
+
+    <!-- canvas layers for glitter & confetti -->
+    <canvas id="glitter-canvas"></canvas>
+    <canvas id="confetti-canvas"></canvas>
+
+    <div class="content-wrap">
+      <div class="card">
+
+        <div class="viewport" aria-live="polite">
+
+          <!-- Slide 1: Closed box -->
+          <section class="slide active" data-slide="0" id="slide-0">
+            <div class="gift-wrap">
+              <div class="gift-box" id="box-closed">
+                <div class="box-lid" id="lid">
+                  <!-- lid content (visual) -->
+                </div>
+                <div class="box-base"></div>
+
+                <div class="ribbon" style="top:40%;">
+                  <div class="band"></div>
+                  <div class="bow"></div>
+                </div>
+
+                <!-- home image (decorative) -->
+                <div class="gift-img" aria-hidden="true">
+                  <img src="gambar_gift/home.png" alt="kotak kado" draggable="false">
+                </div>
+              </div>
+            </div>
+
+            <div class="meta">
+              <h1 style="color:#83415b">Gift For <span style="color:#fff;text-shadow:0 8px 20px rgba(255,120,170,0.22)">Najah Alifia</span></h1>
+              <p>semoga najah suka 💖</p>
+              <div class="controls">
+                <button class="btn btn-open" id="open-btn" aria-controls="slide-1">OPEN</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 2: Shinchan Keychain -->
+          <section class="slide" data-slide="1" id="slide-1">
+            <div class="gift-wrap">
+              <div class="gift-box opened" id="box-1">
+                <div class="box-lid" style="transform:rotateX(0);opacity:0.85"></div>
+                <div class="box-base"></div>
+                <div class="ribbon" style="top:40%;">
+                  <div class="band"></div>
+                  <div class="bow"></div>
+                </div>
+                <div class="gift-img effect-rotate effect-bounce">
+                  <img src="gambar_gift/1.png" alt="Shinchan Keychain" draggable="false">
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <h1>Shinchan Keychain</h1>
+              <p>shinchan+pink, kombinasi najah banget.</p>
+              <div class="controls">
+                <button class="btn" id="next-1">NEXT</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 3: Jasmine -->
+          <section class="slide" data-slide="2" id="slide-2">
+            <div class="gift-wrap">
+              <div class="gift-box opened">
+                <div class="box-lid" style="transform:rotateX(0);opacity:0.85"></div>
+                <div class="box-base"></div>
+                <div class="ribbon" style="top:40%;">
+                  <div class="band"></div>
+                  <div class="bow"></div>
+                </div>
+                <div class="gift-img effect-swing">
+                  <img src="gambar_gift/2.png" alt="Keychain Jasmine" draggable="false">
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <h1>Keychain Jasmine</h1>
+              <p>keychain rajut karakter kesukaan najah.</p>
+              <div class="controls">
+                <button class="btn" id="next-2">NEXT</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 4: Asics T-Shirt -->
+          <section class="slide" data-slide="3" id="slide-3">
+            <div class="gift-wrap">
+              <div class="gift-box opened">
+                <div class="box-lid" style="transform:rotateX(0);opacity:0.85"></div>
+                <div class="box-base"></div>
+                <div class="ribbon" style="top:40%;">
+                  <div class="band"></div>
+                  <div class="bow"></div>
+                </div>
+                <div class="gift-img" id="shirt">
+                  <img src="gambar_gift/3.png" alt="Asics T-Shirt" draggable="false" style="opacity:0;transform:scale(.96);transition:all 560ms var(--easing)">
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <h1>Asics T-Shirt</h1>
+              <p>t-shirt asics hasil thrift hehehe, buat najah bobo, warna ijonya najah bangett.</p>
+              <div class="controls">
+                <button class="btn" id="next-3">NEXT</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 5: Pashmina Hitam -->
+          <section class="slide" data-slide="4" id="slide-4">
+            <div class="gift-wrap">
+              <div class="gift-box opened">
+                <div class="box-lid" style="transform:rotateX(0);opacity:0.85"></div>
+                <div class="box-base"></div>
+                <div class="ribbon" style="top:40%;">
+                  <div class="band"></div>
+                  <div class="bow"></div>
+                </div>
+                <div class="gift-img effect-wave" id="pashmina">
+                  <img src="gambar_gift/4.png" alt="Pashmina Hitam" draggable="false">
+                </div>
+              </div>
+            </div>
+            <div class="meta">
+              <h1>Pashmina Hitam</h1>
+              <p>kerudung item yeyy, kayanya najah dah tau jugasi raffi bakal hadiah in ini -_-, tapi najah gatau kan raffi bikin web gini :p.</p>
+              <div class="controls">
+                <button class="btn" id="next-4">NEXT</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 6: Closing - All gifts -->
+          <section class="slide" data-slide="5" id="slide-5">
+            <div class="gift-wrap" style="width:100%">
+              <div style="display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;width:100%">
+                <div style="width:120px;display:flex;align-items:center;justify-content:center"><img src="gambar_gift/1.png" alt="1" style="max-width:100%"></div>
+                <div style="width:120px;display:flex;align-items:center;justify-content:center"><img src="gambar_gift/2.png" alt="2" style="max-width:100%"></div>
+                <div style="width:120px;display:flex;align-items:center;justify-content:center"><img src="gambar_gift/3.png" alt="3" style="max-width:100%"></div>
+                <div style="width:120px;display:flex;align-items:center;justify-content:center"><img src="gambar_gift/4.png" alt="4" style="max-width:100%"></div>
+              </div>
+            </div>
+            <div class="meta">
+              <h1>Semua Hadiah</h1>
+              <p>sudah semuaa, maaf yah najah raffi belum bisa kasi yang spesial-spesial banget. semoga najah sukaa.</p>
+              <div class="controls">
+                <button class="btn" id="claim-btn">CLAIM ALL</button>
+                <button class="btn secondary" onclick="window.location.href='https://hbdnajah.carrd.co/#section02'">BACK</button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <div class="credit">Made with 💖 — Raffi</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Basic slide logic
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let current = 0;
+
+    const openBtn = document.getElementById('open-btn');
+    const next1 = document.getElementById('next-1');
+    const next2 = document.getElementById('next-2');
+    const next3 = document.getElementById('next-3');
+    const next4 = document.getElementById('next-4');
+    const claimBtn = document.getElementById('claim-btn');
+    const backBtn = document.getElementById('back-btn');
+
+    const glitterCanvas = document.getElementById('glitter-canvas');
+    const confettiCanvas = document.getElementById('confetti-canvas');
+    const gctx = glitterCanvas.getContext('2d');
+    const cctx = confettiCanvas.getContext('2d');
+
+    function resizeCanvases(){
+      [glitterCanvas, confettiCanvas].forEach(c=>{c.width = window.innerWidth; c.height = window.innerHeight});
+    }
+    window.addEventListener('resize', resizeCanvases);
+    resizeCanvases();
+
+    // small glitter particle system (continuous subtle)
+    const glitters = [];
+    function spawnGlitter(x,y,amount=14){
+      for(let i=0;i<amount;i++){
+        glitters.push({x:x||(window.innerWidth*Math.random()),y:y||(-20),vx:(Math.random()-0.5)*1.6,vy:Math.random()*1.6+0.2,life:Math.random()*60+40,size:Math.random()*2.6+0.6,fade:Math.random()*0.02+0.003});
+      }
+    }
+    // gentle continuous sparkles near center
+    setInterval(()=>{
+      spawnGlitter(window.innerWidth/2 + (Math.random()-0.5)*220, window.innerHeight/2 + (Math.random()-0.3)*160, 6);
+    },800);
+
+    // confetti for claim
+    let confettis = [];
+    function launchConfetti(){
+      confettis = [];
+      const colors = ['#ffd6e6','#ffeedd','#fff7e6','#ffd3e9','#ffffff'];
+      for(let i=0;i<120;i++){
+        confettis.push({x:Math.random()*window.innerWidth,y:-20+Math.random()*40,vx:(Math.random()-0.5)*6,vy:Math.random()*6+2,rot:Math.random()*360,vr:(Math.random()-0.5)*12,size:6+Math.random()*10,color:colors[Math.floor(Math.random()*colors.length)],life:0});
+      }
+      // auto clear after few seconds
+      setTimeout(()=>confettis=[],4000);
+    }
+
+    // Main render loop for particles
+    function renderParticles(){
+      // glitter
+      gctx.clearRect(0,0,glitterCanvas.width,glitterCanvas.height);
+      for(let i=glitters.length-1;i>=0;i--){
+        const p = glitters[i];
+        p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.life -= 1;
+        gctx.beginPath();
+        const alpha = Math.max(0, Math.min(1, p.life/80));
+        gctx.fillStyle = `rgba(255, 240, 255, ${alpha})`;
+        gctx.shadowBlur = 8;
+        gctx.shadowColor = 'rgba(255, 180, 210, 0.9)';
+        gctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+        gctx.fill();
+        if(p.life<=0) glitters.splice(i,1);
+      }
+
+      // confetti
+      cctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+      for(let i=confettis.length-1;i>=0;i--){
+        const f = confettis[i];
+        f.x += f.vx; f.y += f.vy; f.vy += 0.12; f.rot += f.vr*0.1; f.life += 1;
+        cctx.save();
+        cctx.translate(f.x,f.y);
+        cctx.rotate(f.rot*Math.PI/180);
+        cctx.fillStyle = f.color;
+        cctx.fillRect(-f.size/2, -f.size/2, f.size, f.size*0.6);
+        cctx.restore();
+        if(f.y>window.innerHeight+60) confettis.splice(i,1);
+      }
+
+      requestAnimationFrame(renderParticles);
+    }
+    requestAnimationFrame(renderParticles);
+
+    // slide transition util
+    function goToSlide(index){
+      if(index<0) index = 0; if(index>=slides.length) index = slides.length-1;
+      const from = current; const to = index; if(from===to) return;
+      const sFrom = slides[from]; const sTo = slides[to];
+      // out animation
+      sFrom.classList.remove('active');
+      // small scale transition is handled by CSS
+      setTimeout(()=>{
+        sTo.classList.add('active');
+        current = to;
+
+        // special actions per slide
+        if(to===3){ // show shirt with fade
+          const img = document.querySelector('#slide-3 img');
+          setTimeout(()=>{img.style.opacity=1; img.style.transform='scale(1)';},200);
+        }
+      },180);
+    }
+
+    // open sequence: transform closed box then go to slide 1
+    openBtn.addEventListener('click', ()=>{
+      // animate box
+      const box = document.getElementById('box-closed');
+      const lid = document.getElementById('lid');
+      // scale up
+      box.style.transition = 'transform 520ms var(--easing)';
+      box.style.transform = 'scale(1.08)';
+      // lid rotate up
+      lid.style.transition = 'transform 680ms cubic-bezier(.18,.9,.32,1), opacity 420ms';
+      setTimeout(()=>{
+        lid.style.transform = 'rotateX(20deg) translateY(-28px)';
+        lid.style.opacity = '0.9';
+      },80);
+      // sparkle burst
+      spawnGlitter(window.innerWidth/2, window.innerHeight/2 - 80, 36);
+      setTimeout(()=>{
+        // go to slide 1
+        goToSlide(1);
+        // reset closed box visuals
+        box.style.transform='scale(1)';
+        lid.style.transform='';
+      },700);
+    });
+
+    next1.addEventListener('click', ()=>goToSlide(2));
+    next2.addEventListener('click', ()=>goToSlide(3));
+    next3.addEventListener('click', ()=>goToSlide(4));
+    next4.addEventListener('click', ()=>goToSlide(5));
+
+    claimBtn.addEventListener('click', ()=>{
+      launchConfetti();
+      // extra sparkle burst center
+      spawnGlitter(window.innerWidth/2, window.innerHeight/2 - 40, 88);
+    });
+
+    backBtn.addEventListener('click', ()=>goToSlide(0));
+
+    // Accessibility: keyboard control (Enter for open/next)
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Enter'){
+        const active = slides[current];
+        // find a button inside
+        const btn = active.querySelector('button');
+        if(btn) btn.click();
+      }
+      if(e.key==='ArrowRight') goToSlide(Math.min(current+1,slides.length-1));
+      if(e.key==='ArrowLeft') goToSlide(Math.max(current-1,0));
+    });
+
+    // init: slight gentle animation on title
+    document.querySelectorAll('.meta h1').forEach((h,i)=>{
+      h.style.transform='translateY(-4px)'; h.style.opacity=0; setTimeout(()=>{h.style.transition='all 520ms var(--easing)'; h.style.transform='translateY(0)'; h.style.opacity=1;},220+i*80);
+    });
+
+    // ensure images are loaded to prevent layout shift
+    window.addEventListener('load', ()=>{
+      document.querySelectorAll('.gift-img img').forEach(img=>{
+        img.style.willChange = 'transform,opacity';
+      });
+    });
+
+  </script>
+</body>
+</html>
